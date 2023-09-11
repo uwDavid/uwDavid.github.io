@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>David Jiang's resumé</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Bitter' />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+
+<body>
+  <div class="resume">
+    <h1 class="name">
+      <span class="first-name">David</span>
+      <span class="last-name">Jiang</span>
+      <span class="headline">Curriculum Vitae</span>
+    </h1>
+
+    <div class="section contact">
+      <h2 class="section-header">Contact</h2>
+      <div class="content">
+        <div class="member-url-resource url-portfolio">
+          <span class="label">Github</span>
+          <span class="content"><a href="https://github.com/uwDavid" target="_blank">tsp.io</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section positions listing">
+      <h2 class="section-header">Professional Experience</h2>
+      <div class="content">
+        <div class="position first">
+          <div class="listing-title">Fintech Startup</div>
+
+          <div class="dates">
+            <span class="start-month">Jun</span>
+            <span class="start-year">2022</span>
+            <span class="date-separator">-</span>
+            <!-- <span class="is-current">Present</span> -->
+            <span class="end-month">Jul</span>
+            <span class="end-year">2023</span>
+          </div>
+
+          <div class="listing-type">Head of Payment</div>
+
+          <div class="listing-description">
+            <p>Lead the company's payment service integrations with vendors across multiple regions. Also led the
+              development of a Ethereum payment service.</p>
+          </div>
+        </div>
+        <div class="position">
+          <div class="listing-title">Intact Financial</div>
+
+          <div class="dates">
+            <span class="start-month">Sep</span>
+            <span class="start-year">2018</span>
+            <span class="date-separator">-</span>
+            <span class="end-month">Jun</span>
+            <span class="end-year">2022</span>
+          </div>
+
+          <div class="listing-type">FP&A Data Analytics Manager</div>
+
+          <div class="listing-description">
+            <p>Lead design and integration of finance system upgrades (SAP, Longview, Anaplan, Workday). Improved data
+              ETL pipeline and analytics reporting process.</p>
+          </div>
+        </div>
+        <div class="position">
+          <div class="listing-title">Optimus SBR</div>
+
+          <div class="dates">
+            <span class="start-month">Jul</span>
+            <span class="start-year">2017</span>
+            <span class="date-separator">-</span>
+            <span class="end-month">Jul</span>
+            <span class="end-year">2018</span>
+          </div>
+
+          <div class="listing-type">Data Analytics Consultant</div>
+
+          <div class="listing-description">
+            <p>Helped banks with their big data reconciliation and analytics process.</p>
+          </div>
+        </div>
+        <div class="position">
+          <div class="listing-title">Bell Canada (BCE Inc)</div>
+
+          <div class="dates">
+            <span class="start-month">Aug</span>
+            <span class="start-year">2015</span>
+            <span class="date-separator">-</span>
+            <span class="end-month">Jul</span>
+            <span class="end-year">2017</span>
+          </div>
+
+          <div class="listing-type">Finance Manager</div>
+
+          <div class="listing-description">
+            <p>Improved the company's consolidation process and cultivated market insights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section educations listing">
+      <h2 class="section-header">Education</h2>
+      <div class="content">
+        <div class="education">
+          <div class="listing-title">University of Illinois</div>
+
+          <div class="dates">
+            <span class="start-year">2020</span>
+            <span class="date-separator">-</span>
+            <span class="is-current">2023</span>
+          </div>
+          <div class="listing-stats"></div>
+          <div class="listing-stats">GPA 4.00/4.00</div>
+          <span class="listing-type">Master of (MSc), Computer Science and Data Analytics</span>
+        </div>
+        <div class="education">
+          <div class="listing-title">University of Waterloo</div>
+
+          <div class="dates">
+            <span class="start-year">2012</span>
+            <span class="date-separator">-</span>
+            <span class="end-year">2013</span>
+          </div>
+          <div class="listing-stats">GPA 3.80/4.00</div>
+
+          <span class="listing-type">Master of Accounting</span>
+        </div>
+        <div class="education">
+          <div class="listing-title">University of Waterloo</div>
+
+          <div class="dates">
+            <span class="start-year">2008</span>
+            <span class="date-separator">-</span>
+            <span class="end-year">2012</span>
+          </div>
+          <div class="listing-stats">GPA 3.80/4.00</div>
+
+          <span class="listing-type">Bachelor of Mathematics, Accounting and Finance</span>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <script>
+    var listings = document.getElementsByClassName('listing-title');
+    var ptitle = "";
+    var pgroup = 0;
+    for (var i = 0; i < listings.length + 1; i++) {
+      var t = (i === listings.length ? "" : listings.item(i).textContent);
+      if (t.indexOf('First in Class') === 0) {
+        t = "First in Class";
+      }
+
+
+      if (pgroup) {
+        listings.item(i - 1).parentNode.className += " grouped";
+        var dates = listings.item(i - 1).parentNode.getElementsByClassName('dates').item(0);
+        var cnt = document.createElement('div');
+        cnt.className = "dates count";
+        cnt.textContent = "(" + pgroup + " times)";
+        dates.parentNode.insertBefore(cnt, dates);
+        console.log(ptitle, pgroup, cnt);
+      }
+
+      ptitle = t;
+      pgroup = 0;
+
+    }
+
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains("dates") &&
+        e.target.classList.contains("count")) {
+        var el = e.target.parentNode.previousSibling;
+        e.target.parentNode.classList.remove('grouped');
+        e.target.parentNode.removeChild(e.target);
+        while (true) {
+          while (el && el.nodeType != 1) {
+            el = el.previousSibling
+          }
+
+          if (!el || el.style.display != "none") {
+            break;
+          }
+
+          el.style.display = "block";
+          el = el.previousSibling
+        }
+      }
+    }, false);
+  </script>
+</body>
+
+</html>
