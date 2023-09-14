@@ -20,16 +20,18 @@
 
 title: David's Profile
 description: >- # this means to ignore newlines until "baseurl:"
-  Welcome to David Jiang's profile page. I am a master of computer science graduate with years of experience as a Data Analytics Manager. 
+  Welcome to David Jiang's profile page. I am a master of computer science graduate with years of experience as a Data Analytics Manager.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://davidjiang.cloud" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  uwDavid
+github_username: uwDavid
 
 # Build settings
 theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
 plugins:
   - jekyll-feed
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
